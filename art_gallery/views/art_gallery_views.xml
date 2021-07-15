@@ -59,6 +59,7 @@
                     <field name="nombre"/>
                     <field name="largo"/>
                     <field name="anchura"/>
+                    <field name="peso" avg="Average"/>
                     <field name="en_venta" readonly="1"/>
                     <field name="precio" sum="Total"/>
                     <field name="state" width="50px"/>
