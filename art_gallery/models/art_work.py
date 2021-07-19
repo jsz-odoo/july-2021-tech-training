@@ -30,6 +30,7 @@ class ArtWork(models.Model):
     artist_id = fields.Many2one(string='Artista', comodel_name='res.partner')
     display_date_start = fields.Date(string="Display Start")
     display_date_end = fields.Date(string="Display End")
+    contrato = fields.Binary(string='Contrato')
     
     def almacenar(self):
         self.state = 'almacenado'
