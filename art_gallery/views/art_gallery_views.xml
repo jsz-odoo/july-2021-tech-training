@@ -32,6 +32,7 @@
                                 <field name="precio"/>
                                 <field name="precio_especial"/>
                                 <field name="en_venta"/>
+                                <field name="contrato"/>
                             </group>
                             <group>
                                 <field name="display_date_start"/>
