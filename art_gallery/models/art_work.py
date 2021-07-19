@@ -31,7 +31,9 @@ class ArtWork(models.Model):
     display_date_start = fields.Date(string="Display Start")
     display_date_end = fields.Date(string="Display End")
     contrato = fields.Binary(string='Contrato')
-    
+    filename = fields.Char(string='File Name')
+
+
     def almacenar(self):
         self.state = 'almacenado'
         
