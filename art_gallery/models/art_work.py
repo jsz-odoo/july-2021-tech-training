@@ -25,6 +25,7 @@ class ArtWork(models.Model):
         'vendido': [('invisible', True)]
     }, group_operator="avg")
     precio = fields.Float(string='Precio', required=True, group_operator="sum", tracking=True)
+    precio_especial = fields.Float(string='Precio Especial', compute='_compute_precio_especial', inverse='_inverse_precio_especial')
     en_venta = fields.Boolean(string="En Venta", tracking=True)
     artist_id = fields.Many2one(string='Artista', comodel_name='res.partner')
     display_date_start = fields.Date(string="Display Start")
@@ -71,3 +72,17 @@ class ArtWork(models.Model):
         for obra in self:
             if obra.display_date_end < obra.display_date_start:
                 raise ValidationError(_('End date needs to be greater or equal to start date.'))
+
+
+    @api.depends('precio')
+    def _compute_precio_especial(self):
+        for obra in self:
+            obra.precio_especial = obra.precio + 1000
+    
+    @api.depends('precio', 'solo_admin')
+    def _inverse_precio_especial(self):
+        for obra in self:
+            if obra.solo_admin:
+                obra.precio_especial -= 50.0
+            else:
+                obra.precio_especial = obra.precio

@@ -30,6 +30,7 @@
                         <group name="info_adicional" string="Información Adicional">
                             <group>
                                 <field name="precio"/>
+                                <field name="precio_especial"/>
                                 <field name="en_venta"/>
                             </group>
                             <group>
